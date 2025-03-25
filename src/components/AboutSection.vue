@@ -32,10 +32,12 @@
                 
                 <p class="text-base lg:text-lg mt-8 py-8">
                     I come from a background in Computer Science and AI, but my true passion lies at the intersection of technology, design, and immersive experiences. Over the past few years, I’ve built VR applications for both industrial simulations and game environments, combining technical depth with a strong eye for interaction and UX.
-
+<br><br>
 I’ve worked with companies like Bosch Sensortec and Fraunhofer, where I focused on building performance-optimized XR experiences using Unreal Engine, Unity, and tools like Blender and XR Toolkit. Whether it’s crafting responsive VR menus, integrating real-time data, or simulating complex systems — I enjoy solving real-world problems through immersive design.
+<br><br>
 
 Beyond code and 3D assets, I care deeply about how users feel inside a virtual space — from intuitive interactions to emotional impact. I'm a fast learner, a curious thinker, and someone who thrives in creative, cross-functional teams.
+<br><br>
 
 Let’s push the boundaries of what's possible in XR 🚀
                 </p>
