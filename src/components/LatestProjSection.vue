@@ -126,7 +126,7 @@ const Projects = ref([
         description: 'Created an immersive main menu UI for a stylized action game using Unreal Engine and Blueprint scripting.',
         technologies: ['Unreal Engine', 'Blueprint', 'Game UI Design'],
         webURL: '',
-        gitURL: ''
+        gitURL: 'https://drive.google.com/drive/folders/1q5P7p3WlMVIBX17ZFgWoX-jUUWMQWlDk?usp=drive_link'
     },
     {
         id: 6,
