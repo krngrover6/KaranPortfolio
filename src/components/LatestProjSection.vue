@@ -3,14 +3,25 @@
         <div class="px-4 xl:pl-16">
             <div class="mb-4 md:flex md:justify-between xl:pr-16">
                 <h2 class="text-4xl font-bold text-white">Featured Projects</h2>
-                <div class="flex space-x-4 mb-4 mt-5 md:mt-0">
-                    <button class="hover:text-primary" 
-                            v-for="category in ['all', 'virtual reality', 'mixed reality','XR','game UI design']"
-                            :key="category" 
-                            @click="() => selectedCategory = category">
-                        {{ category }}
-                    </button>
-                </div>
+   <!-- Responsive pill-style filter bar 
+<div
+  class="flex flex-wrap sm:flex-nowrap sm:overflow-x-auto gap-2 mb-4 mt-5 md:mt-0 px-1 scrollbar-hide"
+>
+  <button
+    v-for="category in ['all', 'virtual reality', 'mixed reality', 'XR', 'game UI design']"
+    :key="category"
+    @click="() => selectedCategory = category"
+    :class="[
+      'px-4 py-2 rounded-full text-sm font-medium border transition-all whitespace-nowrap',
+      selectedCategory === category.toLowerCase()
+        ? 'bg-primary text-black border-primary'
+        : 'bg-[#2a2a2a] text-gray-300 border-[#444] hover:border-primary hover:text-white'
+    ]"
+  >
+    {{ category }}
+  </button>
+</div>  -->
+
             </div>
             <ul class="px-4 sm:py-16 xl:pr-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-10 md:gap-10"
                 data-aos="fade-right">

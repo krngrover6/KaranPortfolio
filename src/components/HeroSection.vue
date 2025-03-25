@@ -36,7 +36,7 @@
 
             <!-- Resume Button -->
             <a
-              href="https://drive.google.com/file/d/1b9roDryCC_6AGt1NnIwii9H5uAqrZ3Mq/view?usp=sharing"
+              href="https://drive.google.com/file/d/1UukXp86j7i3y9LIoER-2QRQAHO1ipniz/view"
               target="_blank"
               class="min-w-[140px]"
             >
