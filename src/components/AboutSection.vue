@@ -41,20 +41,21 @@ Beyond code and 3D assets, I care deeply about how users feel inside a virtual s
 
 Let’s push the boundaries of what's possible in XR 🚀
                 </p>
-                <div class="grid grid-cols-3 gap-4 max-w-lg pt-8">
-                    <div class="text-center rounded-xl bg-[#1e1e1e] shadow-lg border border-[#1e1e1e] p-3">
-                        <h3 class="text-white font-bold text-xl sm:text-2xl lg:text-3xl">+50</h3>
-                        <p class="text-sm sm:text-base text-gray-300">Happy Clients</p>
-                    </div>
-                    <div class="text-center rounded-xl bg-[#1e1e1e] shadow-lg border border-[#1e1e1e] p-3">
-                        <h3 class="text-white font-bold text-xl sm:text-2xl lg:text-3xl">+100</h3>
-                        <p class="text-sm sm:text-base text-gray-300">Projects Completed</p>
-                    </div>
-                    <div class="text-center rounded-xl bg-[#1e1e1e] shadow-lg border border-[#1e1e1e] p-3">
-                        <h3 class="text-white font-bold text-xl sm:text-2xl lg:text-3xl">+1.5</h3>
-                        <p class="text-sm sm:text-base text-gray-300">Years Experience</p>
-                    </div>
-                </div>
+ <div class="grid grid-cols-3 gap-4 max-w-lg pt-8">
+  <div class="text-center rounded-xl bg-[#1e1e1e] shadow-lg border border-[#1e1e1e] p-3">
+    <h3 class="text-white font-bold text-xl sm:text-2xl lg:text-3xl">+{{ happyClients }}</h3>
+    <p class="text-sm sm:text-base text-gray-300">Happy Clients</p>
+  </div>
+  <div class="text-center rounded-xl bg-[#1e1e1e] shadow-lg border border-[#1e1e1e] p-3">
+    <h3 class="text-white font-bold text-xl sm:text-2xl lg:text-3xl">+{{ projectsCompleted }}</h3>
+    <p class="text-sm sm:text-base text-gray-300">Projects Completed</p>
+  </div>
+  <div class="text-center rounded-xl bg-[#1e1e1e] shadow-lg border border-[#1e1e1e] p-3">
+    <h3 class="text-white font-bold text-xl sm:text-2xl lg:text-3xl">+{{ experienceYears.toFixed(1) }}</h3>
+    <p class="text-sm sm:text-base text-gray-300">Years Experience</p>
+  </div>
+</div>
+
             </div>
         </div>
     </section>
@@ -63,20 +64,59 @@ Let’s push the boundaries of what's possible in XR 🚀
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue'
 
 const education = ref([
-    {
-        id: 1,
-        School: 'Brandenburg University of Technology (BTU), Germany',
-        program: 'MSc in Artificial Intelligence',
-        year: '2023 - Present'
+  {
+    id: 1,
+    School: 'Brandenburg University of Technology (BTU), Germany',
+    program: 'MSc in Artificial Intelligence',
+    year: '2023 - Present'
+  },
+  {
+    id: 2,
+    School: 'Dehradun Institute of Technology, India',
+    program: 'Bachelor of Engineering in Computer Science',
+    year: '2018 - 2022'
+  }
+])
+
+const happyClients = ref(0)
+const projectsCompleted = ref(0)
+const experienceYears = ref(0)
+const hasAnimated = ref(false)
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0]
+      if (entry.isIntersecting && !hasAnimated.value) {
+        hasAnimated.value = true
+        animateCount(happyClients, 50, 50)
+        animateCount(projectsCompleted, 100, 35)
+        animateCount(experienceYears, 1.5, 120, 0.1)
+      }
     },
     {
-        id: 2,
-        School: 'Dehradun Institute of Technology, India',
-        program: 'Bachelor of Engineering in Computer Science',
-        year: '2018 - 2022'
+      threshold: 0.3 // when 30% of section is visible
     }
-]);
+  )
+
+  const section = document.getElementById('about')
+  if (section) {
+    observer.observe(section)
+  }
+})
+
+function animateCount(counter, target, interval, step = 1) {
+  const timer = setInterval(() => {
+    if (counter.value < target) {
+      counter.value = Math.min(counter.value + step, target)
+    } else {
+      clearInterval(timer)
+    }
+  }, interval)
+}
 </script>
+
+
