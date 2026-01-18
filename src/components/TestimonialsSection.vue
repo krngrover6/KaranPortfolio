@@ -10,7 +10,7 @@
             <div
               class="w-full mx-auto bg-[#262626] shadow-lg border border-[#1e1e1e] px-6 py-5 text-white font-light mb-6 rounded-xl"
             >
-              <div class="w-full flex mb-4 items-center">
+              <div class="w-full flex mb-6 items-center">
                 <div
                   class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200"
                 >

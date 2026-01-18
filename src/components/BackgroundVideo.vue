@@ -26,12 +26,12 @@
 
     <!-- Top edge blur -->
     <div
-      class="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-[#1a1a1a] via-[#1a1a1a]/70 to-transparent"
+      class="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent"
     ></div>
 
     <!-- Bottom edge blur -->
     <div
-      class="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/70 to-transparent"
+      class="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent"
     ></div>
 
     <!-- Overall overlay -->

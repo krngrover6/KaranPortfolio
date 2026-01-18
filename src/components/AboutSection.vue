@@ -1,130 +1,142 @@
 <template>
-  <section class="text-white mt-18" id="about">
-    <div class="absolute z-0 top-[93rem] inset-x-0 h-64 flex items-start">
+  <section class="text-white py-16 px-4 relative" id="about">
+    <!-- Background gradient -->
+    <div
+      class="absolute z-0 top-0 left-0 w-full h-full overflow-hidden pointer-events-none"
+    >
       <div
-        class="h-24 w-64 bg-gradient-to-br from-primary via-secondary blur-2xl to-[#570cac] opacity-20"
+        class="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-br from-primary via-secondary to-[#570cac] opacity-10 blur-3xl"
+      ></div>
+      <div
+        class="absolute bottom-1/4 right-0 w-96 h-96 bg-gradient-to-tl from-secondary to-primary opacity-10 blur-3xl"
       ></div>
     </div>
-    <div
-      class="flex flex-col-reverse gap-10 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16 z-1"
-    >
-      <div class="w-full" data-aos="zoom-in">
-        <h2 class="text-4xl font-bold text-white text-left mb-6">
-          My
-          <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
-            >Education</span
-          >
-        </h2>
-        <div class="space-y-5 py-8">
+
+    <div class="max-w-screen-xl mx-auto relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Left: Text Content -->
+        <div class="order-2 lg:order-1" data-aos="fade-right">
+          <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
+            >
+              About
+            </span>
+            Me
+          </h2>
+
           <div
-            v-for="element in education"
-            :key="element.id"
-            class="p-4 sm:p-6 flex items-start gap-6 sm:gap-8 w-full rounded-xl bg-[#1e1e1e] shadow-lg border border-[#1e1e1e]"
+            class="space-y-4 text-gray-300 text-base lg:text-lg leading-relaxed"
           >
-            <div class="w-10 sm:w-14 shrink-0">
-              <img
-                src="https://img.icons8.com/ios-glyphs/60/ffffff/graduation-cap--v1.png"
-                alt="graduation-cap--v1"
-                class="w-full"
-              />
-            </div>
-            <div class="grow">
-              <h3
-                class="text-xl lg:text-2xl mb-3 font-semibold capitalize text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
+            <p>
+              With a foundation in
+              <span class="text-white font-semibold"
+                >Computer Science and AI</span
+              >, my passion lies at the intersection of technology, design, and
+              immersive experiences. I specialize in building VR applications
+              for industrial simulations and interactive environments, blending
+              technical expertise with user-centric design.
+            </p>
+
+            <p>
+              At
+              <span class="text-white font-semibold">Bosch Sensortec</span> and
+              <span class="text-white font-semibold"> Fraunhofer</span>, I
+              developed performance-optimized XR solutions using Unreal Engine,
+              Unity, Blender, and XR Toolkit. From crafting intuitive VR
+              interfaces to integrating real-time data streams and simulating
+              complex industrial systems, I thrive on transforming technical
+              challenges into seamless user experiences.
+            </p>
+
+            <p>
+              Beyond code and 3D assets, I'm driven by creating
+              <span class="text-white font-semibold">
+                emotionally resonant virtual spaces</span
               >
-                {{ element.School }}
-              </h3>
-              <p class="text-white">{{ element.program }}</p>
-              <p class="text-white text-sm sm:text-base">{{ element.year }}</p>
+              where interactions feel natural and impactful. As a fast learner
+              and collaborative problem-solver, I excel in cross-functional
+              teams pushing the boundaries of XR innovation.
+            </p>
+
+            <p class="text-primary font-medium flex items-center gap-2">
+              Let's build the future of immersive technology together
+              <span class="text-2xl">🚀</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Image -->
+        <div
+          class="order-1 lg:order-2 flex justify-center lg:justify-end"
+          data-aos="fade-left"
+        >
+          <div class="relative w-full max-w-md">
+            <!-- Glow effect -->
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-3xl blur-2xl"
+            ></div>
+
+            <!-- Image container -->
+            <div
+              class="relative rounded-3xl overflow-hidden border-2 border-primary/50 shadow-2xl"
+            >
+              <img
+                src="@/assets/KaranMC.jpeg"
+                alt="Karan Grover - VR Developer"
+                class="w-full h-auto object-cover"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
       </div>
-      <div
-        class="mt-4 md:mt-0 text-left flex flex-col z-10 h-full"
-        data-aos="zoom-in"
-      >
-        <h2 class="text-4xl font-bold text-white text-left mb-6">
-          <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
-            >About</span
+
+      <!-- Stats Section -->
+      <div class="mt-16" data-aos="fade-up">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div
+            class="group relative bg-gradient-to-br from-[#1e1e1e] to-[#2a2a2a] rounded-2xl p-6 border border-gray-800 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20"
           >
-          Me
-        </h2>
-
-        <p class="text-base lg:text-lg py-8">
-          I come from a background in Computer Science and AI, but my true
-          passion lies at the intersection of technology, design, and immersive
-          experiences. Over the past few years, I’ve built VR applications for
-          both industrial simulations and game environments, combining technical
-          depth with a strong eye for interaction and UX.
-          <br /><br />
-          I’ve worked with companies like Bosch Sensortec and Fraunhofer, where
-          I focused on building performance-optimized XR experiences using
-          Unreal Engine, Unity, and tools like Blender and XR Toolkit. Whether
-          it’s crafting responsive VR menus, integrating real-time data, or
-          simulating complex systems — I enjoy solving real-world problems
-          through immersive design.
-          <br /><br />
-
-          Beyond code and 3D assets, I care deeply about how users feel inside a
-          virtual space — from intuitive interactions to emotional impact. I'm a
-          fast learner, a curious thinker, and someone who thrives in creative,
-          cross-functional teams.
-          <br /><br />
-
-          Let’s push the boundaries of what's possible in XR 🚀
-        </p>
-        <div class="lg:h-full md:flex">
-          <div class="flex w-full h-96 min-h-[24rem] items-center relative">
-            <div
-              class="absolute z-0 top-1/2 -translate-y-1/2 w-5/6 right-0 h-[calc(80%+20px)] bg-gradient-to-tr opacity-25 from-[#570cac] to-primary blur-2xl"
-            ></div>
-            <div
-              class="absolute h-full z-10 p-2 -translate-y-1/2 top-1/2 lg:right-3 md:right-40 sm:right-16 rounded-3xl shadow-lg border border-primary"
-            >
-              <img
-                src="@/assets/top_pricture.png"
-                alt="Hero pic"
-                width="500"
-                height="auto"
-                loading="lazy"
-                class="w-full h-full rounded-3xl object-cover"
-              />
+            <div class="text-center">
+              <div
+                class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2"
+              >
+                {{ happyClients }}+
+              </div>
+              <p class="text-gray-400 text-sm uppercase tracking-wide">
+                Happy Clients
+              </p>
             </div>
           </div>
-        </div>
 
-        <div class="w-full flex items-center justify-center">
           <div
-            class="grow shrink-0 grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-7xl pt-8"
+            class="group relative bg-gradient-to-br from-[#1e1e1e] to-[#2a2a2a] rounded-2xl p-6 border border-gray-800 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20"
           >
-            <div
-              class="text-center rounded-xl bg-[#1e1e1e] shadow-lg border border-[#1e1e1e] px-3 py-5"
-            >
-              <h3 class="text-white font-bold text-2xl sm:text-3xl lg:text-4xl">
-                {{ happyClients }}+
-              </h3>
-              <p class="text-sm sm:text-base text-gray-300">Happy Clients</p>
-            </div>
-            <div
-              class="text-center rounded-xl bg-[#1e1e1e] shadow-lg border border-[#1e1e1e] px-3 py-5"
-            >
-              <h3 class="text-white font-bold text-2xl sm:text-3xl lg:text-4xl">
+            <div class="text-center">
+              <div
+                class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2"
+              >
                 {{ projectsCompleted }}+
-              </h3>
-              <p class="text-sm sm:text-base text-gray-300">
+              </div>
+              <p class="text-gray-400 text-sm uppercase tracking-wide">
                 Projects Completed
               </p>
             </div>
-            <div
-              class="text-center rounded-xl bg-[#1e1e1e] shadow-lg border border-[#1e1e1e] px-3 py-5"
-            >
-              <h3 class="text-white font-bold text-2xl sm:text-3xl lg:text-4xl">
+          </div>
+
+          <div
+            class="group relative bg-gradient-to-br from-[#1e1e1e] to-[#2a2a2a] rounded-2xl p-6 border border-gray-800 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20"
+          >
+            <div class="text-center">
+              <div
+                class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2"
+              >
                 {{ experienceYears.toFixed(1) }}+
-              </h3>
-              <p class="text-sm sm:text-base text-gray-300">Years Experience</p>
+              </div>
+              <p class="text-gray-400 text-sm uppercase tracking-wide">
+                Years Experience
+              </p>
             </div>
           </div>
         </div>
@@ -135,21 +147,6 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-
-const education = ref([
-  {
-    id: 1,
-    School: "Brandenburg University of Technology (BTU), Germany",
-    program: "MSc in Artificial Intelligence",
-    year: "2023 - Present",
-  },
-  {
-    id: 2,
-    School: "DIT University, Dehradun, India",
-    program: "Bachelor of Engineering in Computer Science",
-    year: "2018 - 2022",
-  },
-]);
 
 const happyClients = ref(0);
 const projectsCompleted = ref(0);
@@ -162,13 +159,13 @@ onMounted(() => {
       const entry = entries[0];
       if (entry.isIntersecting && !hasAnimated.value) {
         hasAnimated.value = true;
-        animateCount(happyClients, 5, 0);
-        animateCount(projectsCompleted, 20, 10);
-        animateCount(experienceYears, 1.5, 120);
+        animateCount(happyClients, 5, 80);
+        animateCount(projectsCompleted, 20, 50);
+        animateCount(experienceYears, 1.5, 100, 0.1);
       }
     },
     {
-      threshold: 0.3, // when 30% of section is visible
+      threshold: 0.2,
     },
   );
 

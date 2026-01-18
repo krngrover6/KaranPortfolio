@@ -9,15 +9,18 @@
         <!-- Wrap all Components inside a single root element -->
         <div class="w-full h-full flex flex-col gap-10 z-10">
           <VRIntro />
-          <div class="h-screen flex flex-col grow z-10">
+          <div class="h-screen flex flex-col grow z-10 px-4 sm:px-6 md:px-10">
             <NavBar />
             <HeroSection />
           </div>
-          <div class="h-full flex flex-col gap-10 shrink-0 z-10">
+          <div
+            class="h-full flex flex-col gap-10 shrink-0 z-10 px-4 sm:px-6 md:px-10"
+          >
             <AboutSection />
             <LatestProjSection />
-
-            <ExperienceAndSkills />
+            <ToolsUsed />
+            <WorkExperience />
+            <EducationSection />
             <Presentation />
             <TestimonialsSection />
             <ContactSection />
@@ -55,8 +58,8 @@ const TestimonialsSection = defineAsyncComponent(
 const LatestProjSection = defineAsyncComponent(
   () => import("@/components/LatestProjSection.vue"),
 );
-const ExperienceAndSkills = defineAsyncComponent(
-  () => import("@/components/ExperienceAndSkills.vue"),
+const WorkExperience = defineAsyncComponent(
+  () => import("@/components/WorkExperience.vue"),
 );
 const ContactSection = defineAsyncComponent(
   () => import("@/components/ContactSection.vue"),
@@ -71,6 +74,8 @@ const VRIntro = defineAsyncComponent(() => import("@/components/VRIntro.vue"));
 
 import { onMounted } from "vue";
 import BackgroundVideo from "./components/BackgroundVideo.vue";
+import EducationSection from "./components/EducationSection.vue";
+import ToolsUsed from "./components/ToolsUsed.vue";
 
 onMounted(() => {
   const allowSound = () => {
