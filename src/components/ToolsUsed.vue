@@ -11,11 +11,12 @@
 
     <div class="max-w-screen-xl mx-auto">
       <div class="text-left flex flex-col z-10 h-full w-full lg:w-3/4">
-        <h2 class="text-4xl font-bold text-white text-left mb-4">
-          Tools &
+        <h2 class="text-3xl sm:text-4xl font-bold text-white text-left mb-4">
+          🛠️ My
           <span
             class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
-            >Technologies</span
+          >
+            Creative Arsenal</span
           >
         </h2>
 

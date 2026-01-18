@@ -1,7 +1,9 @@
 <template>
   <section class="text-white mt-20" id="contact">
-    <h2 class="text-4xl font-bold text-white text-left mb-4 px-4 xl:pl-16">
-      Let's
+    <h2
+      class="text-3xl sm:text-4xl font-bold text-white text-left mb-4 px-4 xl:pl-16"
+    >
+      📬 Let's
       <span
         class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
         >Connect</span

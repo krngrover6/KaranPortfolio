@@ -1,11 +1,11 @@
 <template>
   <section class="text-white py-8 px-4" id="education">
     <div class="w-full" data-aos="zoom-in">
-      <h2 class="text-4xl font-bold text-white text-left mb-6">
-        My
+      <h2 class="text-3xl sm:text-4xl font-bold text-white text-left mb-6">
+        📚 My
         <span
           class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
-          >Education</span
+          >Learning Path</span
         >
       </h2>
       <div class="space-y-5 py-8">

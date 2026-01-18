@@ -16,7 +16,10 @@
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <!-- Left: Text Content -->
         <div class="order-2 lg:order-1" data-aos="fade-right">
-          <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+          <h2
+            class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6"
+          >
+            👨‍💻
             <span
               class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
             >

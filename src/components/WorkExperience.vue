@@ -1,12 +1,12 @@
 <template>
   <section class="text-white py-8 px-4" id="experience">
     <div class="max-w-screen-xl mx-auto" data-aos="fade-up">
-      <h2 class="text-4xl font-bold text-white text-left mb-8">
-        Work
+      <h2 class="text-3xl sm:text-4xl font-bold text-white text-left mb-8">
+        💼
         <span
           class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
-          >Experience</span
-        >
+          >Professional </span
+        >Journey
       </h2>
 
       <div class="space-y-6 py-4">

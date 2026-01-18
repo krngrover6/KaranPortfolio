@@ -1,7 +1,13 @@
 <template>
   <section class="text-white mt-20" id="testimonials" data-aos="zoom-in">
-    <h2 class="text-4xl font-bold text-white text-left mb-6 px-4 xl:pl-16">
-      Testimonials
+    <h2
+      class="text-3xl sm:text-4xl font-bold text-white text-left mb-6 px-4 xl:pl-16"
+    >
+      💬 Words from
+      <span
+        class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
+        >Collaborators</span
+      >
     </h2>
     <div class="px-4 xl:px-16">
       <Carousel v-bind="settings" :breakpoints="breakpoints">
