@@ -105,21 +105,6 @@
               <div
                 class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2"
               >
-                {{ happyClients }}+
-              </div>
-              <p class="text-gray-400 text-sm uppercase tracking-wide">
-                Happy Clients
-              </p>
-            </div>
-          </div>
-
-          <div
-            class="group relative bg-gradient-to-br from-[#1e1e1e] to-[#2a2a2a] rounded-2xl p-6 border border-gray-800 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20"
-          >
-            <div class="text-center">
-              <div
-                class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2"
-              >
                 {{ projectsCompleted }}+
               </div>
               <p class="text-gray-400 text-sm uppercase tracking-wide">
@@ -162,9 +147,9 @@ onMounted(() => {
       const entry = entries[0];
       if (entry.isIntersecting && !hasAnimated.value) {
         hasAnimated.value = true;
-        animateCount(happyClients, 5, 80);
+
         animateCount(projectsCompleted, 20, 50);
-        animateCount(experienceYears, 1.5, 100, 0.1);
+        animateCount(experienceYears, 2, 100, 0.1);
       }
     },
     {
