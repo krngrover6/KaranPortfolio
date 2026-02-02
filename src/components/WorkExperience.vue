@@ -1,6 +1,6 @@
 <template>
   <section class="text-white py-8 px-4" id="experience">
-    <div class="max-w-screen-xl mx-auto" data-aos="fade-up">
+    <div class="mx-auto" data-aos="fade-up">
       <h2 class="text-3xl sm:text-4xl font-bold text-white text-left mb-8">
         💼
         <span
@@ -18,7 +18,12 @@
         >
           <div class="flex items-start gap-4 sm:gap-6">
             <div class="w-8 sm:w-12 shrink-0 mt-1">
-              <Building2 class="w-full h-full" />
+              <img
+                :src="element.logo"
+                :alt="element.company"
+                class="w-full h-full object-contain aspect-square rounded"
+              />
+              <!-- <Building2 class="w-full h-full" /> -->
             </div>
 
             <div class="grow min-w-0">
@@ -92,6 +97,9 @@
 <script setup>
 import { Building2, ChevronDown } from "lucide-vue-next";
 import { ref } from "vue";
+import lufthansaLogo from "../assets/toolsLogo/lufthansaLogo.svg";
+import boschLogo from "../assets/toolsLogo/boschLogo.svg";
+import fraunhoferLogo from "../assets/toolsLogo/fraunhoferLogo.svg";
 
 const expandedItems = ref([1]); // First item expanded by default
 
@@ -112,6 +120,7 @@ const Experiences = ref([
     id: 1,
     role: "VR Developer",
     company: "Lufthansa Technik",
+    logo: lufthansaLogo,
     location: "Hamburg, Germany",
     date: "11/2025 – Present",
     project: "Multi-User Flight Simulation & Cross-Sectional AR Visualization",
@@ -124,6 +133,7 @@ const Experiences = ref([
     id: 2,
     role: "VR Research Assistant",
     company: "Fraunhofer IEM",
+    logo: fraunhoferLogo,
     location: "Paderborn, Germany",
     date: "04/2025 – 10/2025",
     project: "AI-Driven Production Line Optimization via VR Simulation",
@@ -136,6 +146,7 @@ const Experiences = ref([
     id: 3,
     role: "VR Developer",
     company: "Bosch Sensortec GmbH",
+    logo: boschLogo,
     location: "Reutlingen, Germany",
     date: "11/2024 – 04/2025",
     project: "Immersive Industrial XR Training Platform",
@@ -148,6 +159,7 @@ const Experiences = ref([
     id: 4,
     role: "Research Assistant",
     company: "Fraunhofer IPMS",
+    logo: fraunhoferLogo,
     location: "Dresden, Germany",
     date: "10/2023 – 10/2024",
     project: "3D Modeling for Blood Glucose Sensor Emulation",

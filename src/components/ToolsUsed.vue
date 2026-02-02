@@ -9,8 +9,8 @@
       </span>
     </div>
 
-    <div class="max-w-screen-xl mx-auto">
-      <div class="text-left flex flex-col z-10 h-full w-full lg:w-3/4">
+    <div class="mx-auto">
+      <div class="text-left flex flex-col z-10 h-full w-full">
         <h2 class="text-3xl sm:text-4xl font-bold text-white text-left mb-4">
           🛠️ My
           <span
@@ -20,20 +20,25 @@
           >
         </h2>
 
-        <div class="mt-8 space-y-6">
-          <div v-for="skill in Skills" :key="skill.id">
-            <div class="flex items-end justify-between" data-aos="fade-right">
-              <h4 class="font-semibold uppercase text-white">
-                {{ skill.name }}
-              </h4>
-              <h3 class="text-xl font-bold text-white">{{ skill.width }}</h3>
+        <div
+          class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6"
+        >
+          <div
+            v-for="skill in Skills"
+            :key="skill.id"
+            class="w-full flex flex-col items-center justify-center p-4 rounded-lg bg-[#1e1e1e]/50 hover:bg-[#2a2a2a]/70 transition-all duration-300 hover:scale-105"
+            data-aos="fade-up"
+          >
+            <div class="w-20 h-20 flex items-center justify-center mb-3">
+              <img
+                :src="skill.logo"
+                :alt="skill.name"
+                class="w-full h-full object-contain"
+              />
             </div>
-            <div class="mt-2 h-1 w-full bg-[#1e1e1e] rounded-full">
-              <div
-                class="h-1 rounded-full bg-primary"
-                :style="`width: ${skill.width}`"
-              ></div>
-            </div>
+            <h4 class="text-sm font-semibold text-white text-center">
+              {{ skill.name }}
+            </h4>
           </div>
         </div>
       </div>
@@ -44,46 +49,56 @@
 <script setup>
 import { ref } from "vue";
 
+// Import logos with correct path
+import unrealLogo from "../assets/toolsLogo/unrealLogo.svg";
+import unityLogo from "../assets/toolsLogo/unityLogo.svg";
+import blenderLogo from "../assets/toolsLogo/blenderLogo.svg";
+import cppLogo from "../assets/toolsLogo/cppLogo.svg";
+import csharpLogo from "../assets/toolsLogo/csharpLogo.svg";
+import fishnetLogo from "../assets/toolsLogo/fishnetLogo.svg";
+// import lufthansaLogo from "../assets/toolsLogo/lufthansaLogo.svg";
+// import boschLogo from "../assets/toolsLogo/boschLogo.svg";
+
 const Skills = ref([
   {
     id: 1,
     name: "Unreal Engine",
-    width: "90%",
+    logo: unrealLogo,
   },
   {
     id: 2,
     name: "Unity",
-    width: "95%",
+    logo: unityLogo,
   },
   {
     id: 3,
-    name: "C++ & Blueprints",
-    width: "85%",
+    name: "C++",
+    logo: cppLogo,
   },
   {
     id: 4,
-    name: "Blender & 3D Modeling",
-    width: "80%",
+    name: "Blender",
+    logo: blenderLogo,
   },
   {
     id: 5,
-    name: "XR Development (VR/AR/MR)",
-    width: "88%",
+    name: "C#",
+    logo: csharpLogo,
   },
   {
     id: 6,
-    name: "UI/UX Design",
-    width: "85%",
+    name: "Fishnet",
+    logo: fishnetLogo,
   },
-  {
-    id: 7,
-    name: "Fish-Networking & Multiplayer",
-    width: "75%",
-  },
-  {
-    id: 8,
-    name: "Digital Twin & IoT Integration",
-    width: "82%",
-  },
+  // {
+  //   id: 7,
+  //   name: "Lufthansa",
+  //   logo: lufthansaLogo,
+  // },
+  // {
+  //   id: 8,
+  //   name: "Bosch",
+  //   logo: boschLogo,
+  // },
 ]);
 </script>
