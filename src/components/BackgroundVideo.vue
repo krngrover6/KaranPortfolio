@@ -18,7 +18,6 @@
       loop
       playsinline
       class="w-full h-full object-cover"
-      poster="@/assets/image.png"
     >
       <source src="@/assets/bgVideo/vid2.mp4" type="video/mp4" />
       <source src="@/assets/bgVideo/vid1.mp4" type="video/webm" />

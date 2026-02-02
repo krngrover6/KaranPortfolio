@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#0a0a0a] w-full flex flex-col min-h-screen">
+  <div class="bg-[#0a0a0a] w-full flex flex-col min-h-screen overflow-x-hidden">
     <!-- Fixed Background Video -->
     <BackgroundVideo />
 
@@ -8,7 +8,7 @@
       <template #default>
         <!-- Wrap all Components inside a single root element -->
         <div class="w-full h-full flex flex-col gap-10 z-10">
-          <VRIntro />
+          <!-- <VRIntro /> -->
           <div class="h-screen flex flex-col grow z-10 px-4 sm:px-6 md:px-10">
             <NavBar />
             <HeroSection />
