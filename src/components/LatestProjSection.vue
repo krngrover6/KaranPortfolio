@@ -1,7 +1,7 @@
 <template>
   <section class="text-white mt-20" id="projects">
     <div class="flex flex-col gap-y-10">
-      <div class="mb-4 md:flex md:justify-between">
+      <div class="mb-4 px-4 md:flex md:justify-between">
         <h2 class="text-3xl sm:text-4xl font-bold text-white">
           ✨ Featured
           <span
@@ -9,116 +9,70 @@
             >Work</span
           >
         </h2>
-        <!-- Responsive pill-style filter bar 
-<div
-  class="flex flex-wrap sm:flex-nowrap sm:overflow-x-auto gap-2 mb-4 mt-5 md:mt-0 px-1 scrollbar-hide"
->
-  <button
-    v-for="category in ['all', 'virtual reality', 'mixed reality', 'XR', 'game UI design']"
-    :key="category"
-    @click="() => selectedCategory = category"
-    :class="[
-      'px-4 py-2 rounded-full text-sm font-medium border transition-all whitespace-nowrap',
-      selectedCategory === category.toLowerCase()
-        ? 'bg-primary text-black border-primary'
-        : 'bg-[#2a2a2a] text-gray-300 border-[#444] hover:border-primary hover:text-white'
-    ]"
-  >
-    {{ category }}
-  </button>
-</div>  -->
       </div>
+
       <ul
-        class="px-4 xl:pr-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+        class="px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
         data-aos="zoom-in"
       >
-        <div
-          v-for="project in filteredProjects"
-          :key="project.id"
-          class="flex flex-col"
+        <li
+          v-for="(project, index) in filteredProjects"
+          :key="index"
+          ref="cardEls"
+          class="project-card group relative rounded-xl overflow-hidden cursor-pointer border border-[#232323] bg-[#151515]"
+          @pointerenter="onPointerEnter(index, $event)"
+          @pointerleave="onPointerLeave(index, $event)"
+          @click="openModal(index)"
         >
-          <div
-            class="h-48 md:h-[20rem] rounded-t-xl relative group shrink-0"
-            :style="{
-              backgroundImage: 'url(' + project.image + ')',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-            }"
-          >
+          <div class="relative h-56 md:h-72 w-full overflow-hidden">
+            <video
+              ref="videoEls"
+              :poster="project.image"
+              :src="project.videoUrl"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none"
+            ></video>
+
             <div
-              class="overlay items-center justify-center absolute top-0 left-0 w-full h-full bg-[#181818] bg-opacity-0 hidden group-hover:flex group-hover:bg-opacity-80 transition-all duration-500"
-            >
-              <a
-                class="h-14 w-14 mr-2 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
-                :href="project.webURL"
-                rel="noreferrer nofollow noindex"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
-                  ></path>
-                </svg>
-              </a>
-              <a
-                class="h-14 w-14 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
-                :href="project.gitURL"
-                rel="noreferrer nofollow noindex"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
-                  ></path>
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div
-            class="grow text-white rounded-b-xl mt-3 bg-[#2a2a2a] shadow-lg border border-[#1e1e1e] py-6 px-4 flex flex-col gap-2 sm:gap-3"
-          >
-            <h3 class="text-lg font-semibold capitalize lg:text-xl">
-              {{ project.title }}
-            </h3>
-            <p class="text-[#ADB7BE]">{{ project.description }}</p>
+              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"
+            ></div>
+
             <div
-              class="flex flex-wrap justify-center items-center gap-2 mt-auto"
+              class="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             >
               <div
-                v-for="technology in project.technologies"
-                :key="technology"
-                class="text-center px-4 py-1 rounded-full bg-[#2a2a2a] text-sm md:text-base border border-[#f59e0b] shadow-sm backdrop-blur-md"
+                class="w-14 h-14 rounded-full bg-black/50 border border-white/30 flex items-center justify-center backdrop-blur-sm"
               >
-                <span class="text-[#f59e0b]">{{ technology }}</span>
+                <Play class="w-6 h-6 text-white fill-white" />
+              </div>
+            </div>
+
+            <div
+              class="pointer-events-none absolute bottom-0 left-0 right-0 p-4 sm:p-5"
+            >
+              <h3
+                class="text-base sm:text-lg font-semibold text-white leading-snug"
+              >
+                {{ project.title }}
+              </h3>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <span
+                  v-for="tech in project.technologies"
+                  :key="tech"
+                  class="text-[11px] sm:text-xs px-2 py-0.5 rounded-full border border-primary/60 text-primary bg-black/30"
+                >
+                  {{ tech }}
+                </span>
               </div>
             </div>
           </div>
-        </div>
+        </li>
       </ul>
 
-      <div>
+      <div class="px-4 xl:pr-16">
         <p class="text-gray-300 mb-3 text-lg">
           Ready to explore more immersive experiences?
         </p>
@@ -133,105 +87,236 @@
         </a>
       </div>
     </div>
+
+    <!-- Modal -->
+    <transition name="modal-fade">
+      <div
+        v-if="activeIndex !== null"
+        class="fixed inset-0 z-[999] bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8"
+        @click.self="closeModal"
+      >
+        <div
+          class="relative w-full max-w-5xl bg-[#151515] border border-[#232323] rounded-2xl overflow-hidden grid md:grid-cols-2"
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            @click="closeModal"
+            aria-label="Close"
+            class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:border-primary transition-colors"
+          >
+            <X class="w-5 h-5" />
+          </button>
+
+          <div class="bg-black flex items-center justify-center">
+            <video
+              ref="modalVideoRef"
+              :src="activeProject?.videoUrl"
+              :poster="activeProject?.image"
+              controls
+              controlsList="nodownload"
+              autoplay
+              muted
+              loop
+              playsinline
+              class="w-full h-full max-h-[70vh] md:max-h-[80vh] object-contain"
+            ></video>
+          </div>
+
+          <div class="p-6 sm:p-8 flex flex-col">
+            <h3 class="text-xl sm:text-2xl font-bold text-white">
+              {{ activeProject?.title }}
+            </h3>
+            <p class="text-[#adb7be] leading-relaxed mt-4">
+              {{ activeProject?.description }}
+            </p>
+
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span
+                v-for="tech in activeProject?.technologies"
+                :key="tech"
+                class="text-xs sm:text-sm px-3 py-1 rounded-full border border-primary/60 text-primary"
+              >
+                {{ tech }}
+              </span>
+            </div>
+
+            <div class="mt-auto pt-8 flex flex-wrap gap-3">
+              <a
+                :href="activeProject?.webURL"
+                target="_blank"
+                rel="noreferrer nofollow noindex"
+                class="px-4 py-2 rounded-full bg-primary text-black font-semibold hover:scale-105 transition"
+              >
+                View Project
+              </a>
+              <a
+                :href="activeProject?.gitURL"
+                target="_blank"
+                rel="noreferrer nofollow noindex"
+                class="px-4 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition"
+              >
+                Source / Files
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
   </section>
 </template>
 
 <script setup>
-import { List } from "lucide-vue-next";
-import { ref, computed } from "vue";
+import { List, Play, X } from "lucide-vue-next";
+import { ref, computed, onMounted, onBeforeUnmount, nextTick } from "vue";
+import { PROJECT_DETAILS } from "../utils/data/projectDetails";
 
-const Projects = ref([
-  {
-    id: 1,
-    category: "Virtual Reality",
-    image: new URL("@/assets/zombie.jpeg", import.meta.url).href,
-    title: "Zombie Survival Multiplayer",
-    description:
-      "Built in Unity with C# using NavMesh AI, ragdoll physics, and limb dismemberment in a foggy night cemetery setting for immersive VR gameplay.",
-    technologies: ["Unity", "C#", "NavMesh"],
-    webURL:
-      "https://drive.google.com/drive/folders/1EeyzwJzQG0ErTtl7lgjC2EUsnywfJxQv?usp=drive_link",
-    gitURL:
-      "https://drive.google.com/file/d/14Q-w9uJPBoBUO7Ho9nmSlQgO_N9fq1-D/view?usp=drive_link",
-  },
+const sampleVideo = new URL("@/assets/bgVideo/vid1.mp4", import.meta.url).href;
 
-  {
-    id: 2,
-    category: "XR",
-    image: new URL("@/assets/spaceship.jpeg", import.meta.url).href,
-    title: "VR Space Adventure With Interaction Mechanics",
-    description:
-      "Narrative VR space mission built with Unity and XR Toolkit, featuring grab, teleport, and custom interaction systems.",
-    technologies: ["Unity", "XR Toolkit ", "URP"],
-    webURL:
-      "https://drive.google.com/drive/folders/1keUfoFukcNqHDHtj08sMCGMpKsxuKzc-?usp=drive_link",
-    gitURL:
-      "https://drive.google.com/file/d/1n1N3utD5E9tBb77AeeSLYX5i2YuI1jMU/view?usp=drive_link",
-  },
+// const Projects = ref();
 
-  {
-    id: 3,
-    category: "Virtual Reality",
-    image: new URL("@/assets/macarena.png", import.meta.url).href,
-    title: "VR IK Full Body Rig",
-    description:
-      "A VR full-body rig in Unity using procedural IK for realistic head, hand, and leg tracking with animation blending.",
-    technologies: ["Unity", "Inverse Kinematics", "VR Development"],
-    webURL:
-      "https://drive.google.com/drive/folders/1EJrXVONKhj0KRTBW6bydgKLh-3x-szAl?usp=drive_link",
-    gitURL:
-      "https://drive.google.com/file/d/1GoFXxqOy7yaYjT-RGC3mD9uLLnXIOy3A/view?usp=drive_link",
-  },
-  {
-    id: 4,
-    category: "Game UI Design",
-    image: new URL("@/assets/practicevalley.jpeg", import.meta.url).href,
-    title: "VR Practise Valley For Movements and Dynamic Agents",
-    description:
-      "Immersive VR environment with dynamic interactions, hand animations, and physics-based movement using Unity XR.",
-    technologies: ["Unity", " XR Toolki", "C#"],
-    webURL: "",
-    gitURL: "",
-  },
-  {
-    id: 5,
-    category: "Game UI Design",
-    image: new URL("@/assets/warrier.jpeg", import.meta.url).href,
-    title: "Ninja_Sifu Last Warrior",
-    description:
-      "Created an immersive main menu UI for a stylized action game using Unreal Engine and Blueprint scripting.",
-    technologies: ["Unreal Engine", "Blueprint", "Game UI Design"],
-    webURL: "",
-    gitURL:
-      "https://drive.google.com/drive/folders/1q5P7p3WlMVIBX17ZFgWoX-jUUWMQWlDk?usp=drive_link",
-  },
-  {
-    id: 6,
-    category: "mixed reality",
-    image: new URL("@/assets/archery.jpeg", import.meta.url).href,
-    title: "Mixed Reality Archery",
-    description:
-      "A room-scaled mixed reality archery game where players shoot physics-based targets rising from a ground portal",
-    technologies: [
-      "Unity XR",
-      "Procedural Spawning",
-      "Physics Based Interaction",
-    ],
-    webURL:
-      "https://drive.google.com/drive/folders/1Gg9el6Qf-T0vqlaMamwpvUHL8gRPZ3Xn?usp=drive_link",
-    gitURL:
-      "https://drive.google.com/file/d/1EHLm6wLFTiJgZDRrSRgp5NrZ1BA0nTPD/view?usp=drive_link",
-  },
-]);
+const filteredProjects = computed(() => PROJECT_DETAILS);
 
-const selectedCategory = ref("all");
-const filteredProjects = computed(() => {
-  if (selectedCategory.value === "all") {
-    return Projects.value;
+const cardEls = ref([]);
+const videoEls = ref([]);
+const activeIndex = ref(null);
+const modalVideoRef = ref(null);
+
+let rafId = null;
+let currentMobileIndex = -1;
+let currentHoverIndex = -1;
+
+const activeProject = computed(() =>
+  activeIndex.value !== null ? filteredProjects.value[activeIndex.value] : null,
+);
+
+function safePlay(vid) {
+  if (!vid) return;
+  const playPromise = vid.play();
+  if (playPromise !== undefined) playPromise.catch(() => {});
+}
+
+// Decide mouse vs touch from the ACTUAL event firing, not a static
+// matchMedia capability guess. event.pointerType is 'mouse', 'touch', or 'pen'.
+function onPointerEnter(index, event) {
+  if (event.pointerType !== "mouse") return;
+  currentHoverIndex = index;
+  const vid = videoEls.value[index];
+  if (!vid) return;
+  vid.currentTime = 0;
+  safePlay(vid);
+}
+
+function onPointerLeave(index, event) {
+  if (event.pointerType !== "mouse") return;
+  if (currentHoverIndex === index) currentHoverIndex = -1;
+  const vid = videoEls.value[index];
+  if (!vid) return;
+  vid.pause();
+  vid.currentTime = 0;
+  vid.load(); // forces poster image to reappear
+}
+
+function updateMobileActiveCard() {
+  if (window.innerWidth >= 768) return;
+
+  const viewportCenter = window.innerHeight / 2;
+  let closestIndex = -1;
+  let closestDistance = Infinity;
+
+  cardEls.value.forEach((el, index) => {
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const cardCenter = rect.top + rect.height / 2;
+    const distance = Math.abs(cardCenter - viewportCenter);
+    const isVisible = rect.bottom > 0 && rect.top < window.innerHeight;
+    if (isVisible && distance < closestDistance) {
+      closestDistance = distance;
+      closestIndex = index;
+    }
+  });
+
+  const threshold = window.innerHeight * 0.3;
+  const shouldActivate = closestIndex !== -1 && closestDistance < threshold;
+  const nextIndex = shouldActivate ? closestIndex : -1;
+
+  if (nextIndex === currentMobileIndex) return;
+
+  if (currentMobileIndex !== -1 && videoEls.value[currentMobileIndex]) {
+    videoEls.value[currentMobileIndex].pause();
+    videoEls.value[currentMobileIndex].currentTime = 0;
   }
-  return Projects.value.filter(
-    (project) =>
-      project.category.toLowerCase() === selectedCategory.value.toLowerCase(),
-  );
+
+  if (
+    nextIndex !== -1 &&
+    videoEls.value[nextIndex] &&
+    currentHoverIndex === -1
+  ) {
+    safePlay(videoEls.value[nextIndex]);
+  }
+
+  currentMobileIndex = nextIndex;
+}
+
+function onScrollOrResize() {
+  if (rafId !== null) return;
+  rafId = requestAnimationFrame(() => {
+    updateMobileActiveCard();
+    rafId = null;
+  });
+}
+
+function openModal(index) {
+  console.log("click click");
+  const vid = videoEls.value[index];
+  if (vid) vid.pause();
+  if (currentMobileIndex === index) currentMobileIndex = -1;
+  if (currentHoverIndex === index) currentHoverIndex = -1;
+
+  activeIndex.value = index;
+  document.body.style.overflow = "hidden";
+  nextTick(() => {
+    if (modalVideoRef.value) {
+      modalVideoRef.value.currentTime = 0;
+      safePlay(modalVideoRef.value);
+    }
+  });
+}
+
+function closeModal() {
+  if (modalVideoRef.value) modalVideoRef.value.pause();
+  activeIndex.value = null;
+  document.body.style.overflow = "";
+}
+
+function onKeydown(e) {
+  if (e.key === "Escape" && activeIndex.value !== null) closeModal();
+}
+
+onMounted(() => {
+  window.addEventListener("keydown", onKeydown);
+  window.addEventListener("scroll", onScrollOrResize, { passive: true });
+  window.addEventListener("resize", onScrollOrResize);
+  nextTick(() => updateMobileActiveCard());
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("keydown", onKeydown);
+  window.removeEventListener("scroll", onScrollOrResize);
+  window.removeEventListener("resize", onScrollOrResize);
+  if (rafId !== null) cancelAnimationFrame(rafId);
+  document.body.style.overflow = "";
 });
 </script>
+
+<style scoped>
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+</style>

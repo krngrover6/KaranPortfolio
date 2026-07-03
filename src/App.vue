@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#0a0a0a] w-full flex flex-col min-h-screen overflow-x-hidden">
+  <div class="bg-black w-full flex flex-col min-h-screen overflow-x-hidden">
     <!-- Fixed Background Video -->
     <BackgroundVideo />
 
@@ -14,14 +14,14 @@
             <HeroSection />
           </div>
           <div
-            class="h-full flex flex-col gap-10 shrink-0 z-10 px-4 sm:px-6 md:px-10"
+            class="w-full max-w-8xl mx-auto h-full flex flex-col gap-10 shrink-0 z-10 px-3 sm:px-5 md:px-7"
           >
             <AboutSection />
             <LatestProjSection />
             <ToolsUsed />
             <WorkExperience />
             <EducationSection />
-            <Presentation />
+            <!-- <Presentation /> -->
             <TestimonialsSection />
             <ContactSection />
 

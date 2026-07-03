@@ -15,6 +15,7 @@
       class="relative w-full max-w-6xl aspect-video rounded-xl overflow-hidden shadow-2xl border border-[#33353F]"
     >
       <iframe
+        title="Immersion Presentation"
         loading="lazy"
         class="w-full h-full"
         src="https://www.canva.com/design/DAGOS9oq3g8/UygPkduKRtrQxNu_slVfcg/view?embed"
