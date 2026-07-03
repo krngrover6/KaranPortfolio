@@ -21,7 +21,7 @@
             <ToolsUsed />
             <WorkExperience />
             <EducationSection />
-            <!-- <Presentation /> -->
+            <Presentation />
             <TestimonialsSection />
             <ContactSection />
 
