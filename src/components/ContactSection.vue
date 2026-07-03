@@ -102,6 +102,28 @@
                   </p>
                 </div>
               </a>
+
+              <!-- Resume -->
+              <a
+                :href="resumeUrl"
+                target="_blank"
+                rel="noreferrer nofollow noindex"
+                class="flex items-center gap-4 group"
+              >
+                <div
+                  class="w-11 h-11 shrink-0 rounded-full bg-[#232323] border border-[#2b2b2b] flex items-center justify-center group-hover:border-primary transition-colors"
+                >
+                  <FileText class="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h3 class="text-sm text-gray-400">Resume</h3>
+                  <p
+                    class="text-white group-hover:text-primary transition-colors"
+                  >
+                    Download CV
+                  </p>
+                </div>
+              </a>
             </div>
           </div>
 
@@ -234,7 +256,7 @@
 
 <script setup>
 import { reactive, ref } from "vue";
-import { Mail, Linkedin, Github, Trash, Send } from "lucide-vue-next";
+import { Mail, Linkedin, Github, Trash, Send, FileText } from "lucide-vue-next";
 import {
   EMAIL_ADDRESS,
   GITHUB_URL,
@@ -242,6 +264,8 @@ import {
   LINKEDIN_URL,
   LINKEDIN_USERNAME,
 } from "../utils/data/contactDetails";
+
+const resumeUrl = new URL("@/assets/resume.pdf", import.meta.url).href;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
