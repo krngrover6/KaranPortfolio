@@ -65,9 +65,9 @@ export const PROJECT_DETAILS = [
   {
     id: 4,
     category: "Virtual Reality",
-    image: new URL("@/assets/valley.jpeg", import.meta.url).href,
+    image: new URL("@/assets/engine.jpeg", import.meta.url).href,
     videoUrl: LabSceneVid,
-    title: "VR Practice Valley",
+    title: "VR Engine Lab",
     description:
       "A VR sandbox environment for practicing interaction mechanics and locomotion systems before deployment to full projects.",
     technologies: ["Unity", "VR Development"],
