@@ -1,6 +1,8 @@
 <template>
-  <section class="text-white py-8 px-4" id="skills">
-    <div class="absolute right-0 top-[110rem] h-full w-full justify-end">
+  <section class="relative text-white py-8 px-4" id="skills">
+    <div
+      class="pointer-events-none absolute right-0 top-[110rem] h-full w-full justify-end"
+    >
       <span class="flex opacity-20">
         <span class="w-16 h-32 rounded-l-full flex bg-primary blur-2xl"></span>
         <span
@@ -36,9 +38,9 @@
                 class="w-full h-full object-contain"
               />
             </div>
-            <h4 class="text-sm font-semibold text-white text-center">
+            <h3 class="text-sm font-semibold text-white text-center">
               {{ skill.name }}
-            </h4>
+            </h3>
           </div>
         </div>
       </div>
