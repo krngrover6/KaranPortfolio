@@ -18,7 +18,7 @@
         title="Immersion Presentation"
         loading="lazy"
         class="w-full h-full"
-        src="https://www.canva.com/design/DAGOS9oq3g8/UygPkduKRtrQxNu_slVfcg/view?embed"
+        src="https://www.canva.com/design/DAHBfClJtoE/ckFeShtOJpdQWXixZiztug/view?embed"
         allowfullscreen
       ></iframe>
 
